@@ -1,5 +1,6 @@
 # Import tkinter 
 import tkinter
+import tkinter.messagebox
 
 # Create the GUI window 
 window = tkinter.Tk()
@@ -22,6 +23,23 @@ chk_state = tkinter.BooleanVar()
 chk_state.set(False)
 chk_btn = tkinter.Checkbutton(window,text="Keep me logged in", var=chk_state)
 chk_btn.grid(columnspan=2)
+
+#create a submit button
+def submit():
+    # clear the entry fields
+    def quit_button_clicked():
+    # 11- Message Box 
+        tkinter.messagebox.showinfo("Submitted", "Your entry was successfully submitted! ") 
+        window.quit()
+    if e1.get() == "" or e2.get() == "":
+        tkinter.messagebox.showinfo("Error", "Please enter both username and password")
+    else:
+        quit_button_clicked()
+    return
+
+submit_btn = tkinter.Button(window, text="Submit", command=submit, bg="orange", fg="white", font=("Times New Romans",9), width=10, height=1)
+submit_btn.grid(columnspan=4)
+
 
 # enter the main event loop 
 window.mainloop()
