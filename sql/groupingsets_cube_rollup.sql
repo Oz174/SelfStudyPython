@@ -10,7 +10,7 @@ group By Grouping SETS ((Fruit) , (City));
 -- returns the total also at the end 
 Select Fruit , City , sum(Amt)
 from Spends
-group By Rollup (Fruit , City); -- or city , fruit
+group By Fruit , City with Rollup; -- or city , fruit
 
 -- Cube
 -- returns sum of the first argument in n rows of the first argument
