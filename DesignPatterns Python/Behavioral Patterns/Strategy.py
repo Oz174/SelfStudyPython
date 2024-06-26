@@ -1,90 +1,35 @@
-"""
-This python file implements the strategy design pattern 
-"""
 from abc import ABC, abstractmethod
 
-class CakeFactory(ABC):
-    """
-    Abstract class for the cake factory
-    """
+class SortStrategy(ABC):
     @abstractmethod
-    def get_ingredients(self):
-        """
-        Abstract method to get the cake
-        """
+    def sort(self, collection):
         pass
 
-    @abstractmethod
-    def Make_Cake(self):
-        """
-        Abstract method to mix the ingredients
-        """
-        pass
+class QuickSortStrategy(SortStrategy):
+    def sort(self, collection):
+        # Implement Quick Sort algorithm
+        return sorted(collection)
 
+class MergeSortStrategy(SortStrategy):
+    def sort(self, collection):
+        # Implement Merge Sort algorithm
+        return sorted(collection)
+class Sorter:
+    def __init__(self, strategy):
+        self.strategy = strategy
 
-class ChocolateCake(CakeFactory):
-    """
-    Concrete class for the chocolate cake
-    """
-    def get_ingredients(self):
-        """
-        Get the ingredients for the chocolate cake
-        """
-        return "Flour, Sugar, Cocoa, Baking Powder, Eggs, Milk, Oil, Vanilla Extract"
+    def set_strategy(self, strategy):
+        self.strategy = strategy
 
-    def Make_Cake(self):
-        """
-        Mix the ingredients for the chocolate cake
-        """
-        return "Mix the ingredients for the chocolate cake"
-    
-class LemonCake(CakeFactory):
-    """
-    Concrete class for the lemon cake
-    """
-    def get_ingredients(self):
-        """
-        Get the ingredients for the lemon cake
-        """
-        return "Flour, Sugar, Lemon Zest, Baking Powder, Eggs, Milk, Oil, Lemon Juice"
+    def sort_collection(self, collection):
+        return self.strategy.sort(collection)
 
-    def Make_Cake(self):
-        """
-        Mix the ingredients for the lemon cake
-        """
-        return "Mix the ingredients for the lemon cake"
-    
-class StrawberryCake(CakeFactory):
-    """
-    Concrete class for the strawberry cake
-    """
-    def get_ingredients(self):
-        """
-        Get the ingredients for the strawberry cake
-        """
-        return "Flour, Sugar, Strawberries, Baking Powder, Eggs, Milk, Oil, Vanilla Extract"
+# Usage
+collection = [3, 1, 4, 1, 5, 9, 2, 6]
+quick_sorter = Sorter(QuickSortStrategy())
+sorted_collection = quick_sorter.sort_collection(collection)
+print("Quick Sort:", sorted_collection)
 
-    def Make_Cake(self):
-        """
-        Mix the ingredients for the strawberry cake
-        """
-        return "Mix the ingredients for the strawberry cake"
-    
-if __name__ == "__main__":
-    print("Welcome to Strategy Pattern")
-    print("This class aims to create different types of cakes using the factory design pattern")
-    print("Choose a cake : \n 1- Chocolate Cake \n 2- Lemon Cake \n 3- Strawberry Cake")
-    choice = input("Enter your choice : ")
-    if choice == "1":
-        cake = ChocolateCake()
-    elif choice == "2":
-        cake = LemonCake()
-    elif choice == "3":
-        cake = StrawberryCake()
-    else:
-        print("Invalid choice")
-        exit()
-    print("Ingredients for the cake : ", cake.get_ingredients())
-    print("Making the cake : ", cake.Make_Cake())
-    print("Enjoy your cake!")
-
+merge_sorter = Sorter(MergeSortStrategy())
+sorted_collection = merge_sorter.sort_collection(collection)
+print("Merge Sort:", sorted_collection)
