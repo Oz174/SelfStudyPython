@@ -15,7 +15,7 @@ class MergeSortStrategy(SortStrategy):
         # Implement Merge Sort algorithm
         return sorted(collection)
 class Sorter:
-    def __init__(self, strategy):
+    def __init__(self, strategy:"SortStrategy"):
         self.strategy = strategy
 
     def set_strategy(self, strategy):
