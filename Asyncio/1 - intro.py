@@ -1,5 +1,3 @@
-import asyncio 
-
 # 1- Regular Function Vs Asychronous Function
 def hello():
     return 'hello'
