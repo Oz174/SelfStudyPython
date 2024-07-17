@@ -9,7 +9,7 @@ class QueryTemplate:
         pass
     def output_results(self):
         pass
-def process_query(self):
+    def process_query(self):
         self.connect()
         self.construct_query()
         self.do_query()
