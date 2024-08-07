@@ -1,3 +1,6 @@
 temp/*
 FV/
 .xlsx
+*.pyc
+*.pyo
+*__pycache__/
